@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "field.h"
-#include "fieldqgraphicsview.h"
 
 #include <QMainWindow>
 #include <qgraphicsscene.h>

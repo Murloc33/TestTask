@@ -51,21 +51,24 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::drowField()
 {
+	if (ui->width->text().isEmpty() || ui->height->text().isEmpty()) {
+		QMessageBox::warning(this, tr("Внимание"), tr("Недопустимый размер поля"));
+		return;
+	}
 	if (ui->width->text().toInt() > 100 || ui->height->text().toInt() > 100) {
 		QMessageBox::warning(this, tr("Внимание"), tr("Недопустимый размер поля"));
 		return;
 	}
 
-	if (ui->width->text() == "" || ui->height->text() == "") {
-		QMessageBox::warning(this, tr("Внимание"), tr("Недопустимый размер поля"));
-		return;
-	}
 	m_field->updateSizeField(ui->width->text().toInt(),
 							 ui->height->text().toInt());
-
 	m_field->generateField();
 
-	ui->graphicsView->setScene(m_field->getScene());
+	QGraphicsScene *scene = m_field->getScene();
+	ui->graphicsView->setScene(scene);
+
+	QRectF sceneRect = scene->itemsBoundingRect();
+	ui->graphicsView->setSceneRect(sceneRect);
 }
 
 

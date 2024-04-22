@@ -46,11 +46,11 @@ private:
 private:
 	QVector<QVector<FieldCell*>> m_field;
 
-	FieldCell *m_start;
-	Field::Node *m_path;
+	FieldCell *m_start = nullptr;
+	Field::Node *m_path = nullptr;
 
-	QGraphicsPathItem *m_pathItem;
-	QGraphicsScene *m_scene;
+	QGraphicsPathItem *m_pathItem = nullptr;
+	QGraphicsScene *m_scene = nullptr;
 
 	int m_width = 0;
 	int m_height = 0;

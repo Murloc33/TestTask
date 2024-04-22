@@ -146,6 +146,7 @@ void Field::slotDeletePath()
 {
 	if (m_pathItem && m_pathItem->isActive()) {
 		m_scene->removeItem(m_pathItem);
+		m_pathItem = nullptr;
 	}
 
 }
